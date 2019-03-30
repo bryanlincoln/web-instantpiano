@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <title>Instant Piano</title>
+
+        <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <!-- Suporte a caracteres especiais -->
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <!-- Nome do aplicativo, quando um atalho é criado no iOS ou WP -->
+        <meta name="application-name" content="Piano"/>
+        <meta name="apple-mobile-web-app-title" content="Piano">
+        <!-- Descrição do site quando buscado nos motores de busca -->
+        <meta name="description" id="meta-description" content="Play the piano, record and share your musics!"/>
+        <!-- Palavras-chave para o app ser encontrado -->
+        <meta name="keywords" content="instant, piano"/>
+
+        <!-- O intervalo de atualização dos dados do aplicativo nos motores de busca -->
+        <meta name="revisit-after" content="2 days"/>
+        <!-- Autor do site / Empresa -->
+        <meta name="author" content="Bryan Lincoln"/>
+        <!-- Tela cheia mobile -->
+        <meta name="apple-mobile-web-app-capable" content="yes"/>
+        <meta name="mobile-web-app-capable" content="yes">
+        <!-- Cor da Statusbar e do tema do App -->
+        <meta name="apple-mobile-web-app-status-bar-style" content="#fff"/>
+        <meta name="theme-color" content="#fff">
+
+        <!-- Icones de app e favicon -->
+        <link rel="icon" type="image/x-icon" class="link-icon" href="img/favicon.png"/>
+        <link rel="shortcut icon" type="image/x-ickkon" class="link-icon" href="img/favicon.png"/>
+        <link rel="apple-touch-icon" href="img/favicon.png" />
+        <link rel="apple-touch-icon-precomposed" href="img/favicon.png" />
+
+        <!--     Fonts and icons     -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+        <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+        <!-- CSS Files -->
+        <link rel="stylesheet" href="css/bootstrap.min.css" />
+        <link rel="stylesheet" href="css/base.css" />
+
+        <script src="js/jquery.min.js"></script>
+        <script src="js/audiosynth.js"></script>
+        <script src="js/audiosynth.view.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="row p-4">
+                <div class="col-md-6">
+                    <h1>Instant Piano</h1>
+                    <p>Create and share your music ideas easily!</p>
+                    <a class="btn btn-danger text-light" id="song-record-button" onclick="toggle_record()">
+                        <i class="fa fa-circle"></i> Record
+                    </a>
+                    <input id="new-song-title" type="text" value="Unknown" placeholder="New song title">
+                    <a class="btn btn-info text-light"><i class="fa fa-share"></i> Share</a>
+                </div>
+                <div class="col-md-6 ad-area">
+                    AD Area
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div id="keyboard" class="keyboard-holder"></div>
+            <div class="row">
+                <div class="col-md-6">
+                    <span id="song-name">Loading song...</span>
+                </div>
+                <div class="col-md-6 text-right">
+                    <label for="sound">Sound</label>
+                    <select id="sound">
+                        <option value="0" selected>Keyboard</option>
+                        <option value="1">Organ</option>
+                        <option value="2">Acoustic Guitar</option>
+                        <option value="3">EDM, bro!</option>
+                    </select>
+
+                    <a class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                        <i class="fas fa-cog"></i>
+                    </a>
+                </div>
+            </div>
+
+            <script type="text/javascript">
+
+                var a = new AudioSynthView();
+                a.draw();
+
+            </script>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <a class="btn btn-success text-light"><i class="fa fa-play"></i> Play</a>
+                        <h5 class="modal-title" id="exampleModalLabel">Piano Settings</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        Range [C<span id="OCTAVE_LOWER">3</span>-B<span id="OCTAVE_UPPER">5</span>]
+                        <input type="button" onclick="fnChangeOctave(-1)" value="-" />
+                        <input type="button" onclick="fnChangeOctave(1)" value="+" /><br />
+                        <i>(Use left/right arrows to adjust with keyboard)</i>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <div class="text-center text-muted">
+                Music sharing tool created by Bryan Lincoln © 2019
+                <p>Created using JS Dynamic Audio Synth by <a href="https://keithwhor.com/" target="_blank">Keith William Horwood</a> © 2013</p>
+            </div>
+        </footer>
+
+        <!-- SCRIPTS -->
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/base.js"></script>
+    </body>
+</html>
